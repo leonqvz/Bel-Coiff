@@ -547,7 +547,6 @@
     @media (max-width: 900px) {
       .nav, .nav.stuck { padding-inline: 2rem; }
       .nav-links { display: none; }
-      .nav-toggle { display: flex; }
       .sec { padding: 5rem 2rem; }
       .gallery-head { padding-inline: 2rem; }
       footer { padding-inline: 2rem; flex-direction: column; text-align: center; gap: 1.5rem; }
@@ -582,16 +581,6 @@
     <li><a href="#bewertungen">Bewertungen</a></li>
     <li><a href="#standort" class="nav-cta">Standort</a></li>
   </ul>
-  <button class="nav-toggle" id="toggler" aria-label="Menü" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<nav class="nav-mobile" id="navMobile">
-  <a href="#about">Über uns</a>
-  <a href="#leistungen">Leistungen</a>
-  <a href="#bewertungen">Bewertungen</a>
-  <a href="#standort">Standort</a>
 </nav>
 
 <!-- HERO -->
@@ -945,21 +934,6 @@
     nav.classList.toggle('stuck', window.scrollY > 60);
   }, { passive: true });
 
-  // Mobile menu
-  const toggler = document.getElementById('toggler');
-  const mob = document.getElementById('navMobile');
-  toggler.addEventListener('click', () => {
-    const open = mob.classList.toggle('open');
-    toggler.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  mob.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      mob.classList.remove('open');
-      toggler.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
-  });
 
   // Today highlight
   const today = new Date().getDay();
